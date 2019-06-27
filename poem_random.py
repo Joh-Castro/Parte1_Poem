@@ -1,87 +1,100 @@
 from random import randrange
-misPronombres = ("my","your","his","her")
-misPreposiciones = ("above","across","against","along","among",
+mis_pronombres = ("my","your","his","her")
+mis_preposiciones = ("above","across","against","along","among",
                     "around","before","behind","beneath","beside",
                     "between","beyond","during","inside","onto",
                     "outside","under","underneath","upon","with",
                     "without","through")
-misSustantivos = ("heart","sun","moon","thunder","fire","time",
+mis_sustantivos = ("heart","sun","moon","thunder","fire","time",
                   "wind","sea","river","flavor","wave","willow",
                   "rain","tree","flower","field","meadow","pasture",
-                  "harvest","water","father","mother","brother ","sister")
-misAdjetivos = ("black","white","dark","light","bright","murky","muddy","clear")
-misVerbos = ("runs","walks","stands","climbs","crawls","flows","flies",
+                  "harvest","water","father","mother","brother","sister")
+mis_adjetivos = ("black","white","dark","light","bright","murky","muddy","clear")
+mis_verbos = ("runs","walks","stands","climbs","crawls","flows","flies",
 	         "transcends","ascends","descends","sinks")
 
-def Linea():
+def linea():
 	#LINE: <NOUN> OR <PREPOSITION> OR <PRONOUN>  
 	Azar = randrange(3)
 	if Azar == 0:
-		resultadoLinea = Sustantivo()
+		resultado_linea = sustantivo()
 	elif Azar == 1:
-		resultadoLinea = Preposicion() 
+		resultado_linea = preposicion() 
 	else:
-		resultadoLinea = Pronombre() 
+		resultado_linea = pronombre() 
 
-	return resultadoLinea
+	return resultado_linea
 
 ##########################
 
-def Sustantivo():
-	Azar2 = randrange(2)
+def sustantivo():
+	#NOUN: Lista de Sustantivos <VERB> OR <PREPOSITION> OR $END 
+	Azar2 = randrange(3)
 	if Azar2 == 0:
-		resultadoSustantivo = misSustantivos[randrange(len(misSustantivos))] + " " + misVerbos[randrange(len(misVerbos))]  
+		resultado_sustantivo = mis_sustantivos[randrange(len(mis_sustantivos))] + " " + verbo() 
+	elif Azar2 == 1:
+		resultado_sustantivo = mis_sustantivos[randrange(len(mis_sustantivos))] + " " + preposicion() 
 	else:
-		resultadoSustantivo = misSustantivos[randrange(len(misSustantivos))] + " " + misPreposiciones[randrange(len(misPreposiciones))] 
+		resultado_sustantivo = mis_sustantivos[randrange(len(mis_sustantivos))] #$END
 	
-	return resultadoSustantivo
+	return resultado_sustantivo
 
-def Pronombre():
+def pronombre():
+	#PRONOUN: Lista de Pronombres <NOUN> OR <ADJECTIVE> 
 	Azar3 = randrange(2)
 	if Azar3 == 0:
-		resultadoPronombre = misPronombres[randrange(len(misPronombres))] + " " + Sustantivo()  + " " 
+		resultado_pronombre = mis_pronombres[randrange(len(mis_pronombres))] + " " + sustantivo() 
 	else:
-		resultadoPronombre = misPronombres[randrange(len(misPronombres))] + " " + Adjetivos()  + " " 
+		resultado_pronombre = mis_pronombres[randrange(len(mis_pronombres))] + " " + adjetivo() 
 	
-	return resultadoPronombre
+	return resultado_pronombre
 
-def Preposicion():
+def preposicion():
+	#PREPOSITION: Lista de Preposiciones <NOUN> OR <PRONOUN> OR <ADJECTIVE> 
 	Azar4 = randrange(3)
 	if Azar4 == 0:
-		resultadoPreposicion = misPreposiciones[randrange(len(misPreposiciones))] + " " + Sustantivo()  + " " 
+		resultado_preposicion = mis_preposiciones[randrange(len(mis_preposiciones))] + " " + sustantivo() 
 	elif Azar4 == 1:
-		resultadoPreposicion = misPreposiciones[randrange(len(misPreposiciones))] + " " + Pronombre()  + " " 
+		resultado_preposicion = mis_preposiciones[randrange(len(mis_preposiciones))] + " " + pronombre() 
 	else:
-		resultadoPreposicion = misPreposiciones[randrange(len(misPreposiciones))] + " " + Adjetivos()  + " "
+		resultado_preposicion = mis_preposiciones[randrange(len(mis_preposiciones))] + " " + adjetivo() 
 	
-	return resultadoPreposicion
+	return resultado_preposicion
 
 ##########################
 
-def Verbo():
-	Azar5 = randrange(2)
+def verbo():
+	#VERB: Lista de Verbos <PREPOSITION> OR <PRONOUN> OR $END 
+	Azar5 = randrange(3)
 	if Azar5 == 0:
-		resultadoVerbo = misVerbos[randrange(len(misVerbos))] + " " + misPreposiciones[randrange(len(misPreposiciones))] 
+		resultado_verbo = mis_verbos[randrange(len(mis_verbos))] + " " + preposicion() 
+	elif Azar5 == 1:
+		resultado_verbo = mis_verbos[randrange(len(mis_verbos))] + " " + pronombre() 
 	else:
-		resultadoVerbo = misVerbos[randrange(len(misVerbos))] + " " + misPronombres[randrange(len(misPronombres))] 
+		resultado_verbo = mis_verbos[randrange(len(mis_verbos))] #$END
 
-	return resultadoVerbo
 
-def Adjetivos():
-	Azar6 = randrange(2)
+	return resultado_verbo
+
+def adjetivo():
+	#ADJECTIVE: Lista de Adjetivos <NOUN> OR <ADJECTIVE> OR $END 
+	Azar6 = randrange(3)
 	if Azar6 == 0:
-		resultadoAdjetivos = misAdjetivos[randrange(len(misAdjetivos))] + " " + misSustantivos[randrange(len(misSustantivos))] 
+		resultado_adjetivo = mis_adjetivos[randrange(len(mis_adjetivos))] + " " + sustantivo() 
+	elif Azar6 == 1:
+		resultado_adjetivo = mis_adjetivos[randrange(len(mis_adjetivos))] + " " + adjetivo() 
 	else:
-		resultadoAdjetivos = misAdjetivos[randrange(len(misAdjetivos))] + " " + misAdjetivos[randrange(len(misAdjetivos))] 
+		resultado_adjetivo = mis_adjetivos[randrange(len(mis_adjetivos))] #$END
 	
-	return resultadoAdjetivos
+	return resultado_adjetivo
 
 ##########################
 
 print("Su Poema random es (Test1):")
 print("-------------------")
 for x in range(1,6):
-	# LINE BREAAK, Cada Iteracion es una Linea del Poema
-	print(Linea())
+	#POEM: <LINE> <LINE> <LINE> <LINE> <LINE> 
+	print(linea())
+	#$LINEBREAK, Cada Iteracion es una Linea del Poema
 print("-------------------")
 print("Realizado por: Joh-Castro.")
