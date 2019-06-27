@@ -29,33 +29,30 @@ def Linea():
 
 def Sustantivo():
 	Azar2 = randrange(2)
-	#son 23 sustantivos
 	if Azar2 == 0:
-		resultadoSustantivo = misSustantivos[randrange(22)] + " " + misVerbos[randrange(10)]  + "."
+		resultadoSustantivo = misSustantivos[randrange(len(misSustantivos))] + " " + misVerbos[randrange(len(misVerbos))]  
 	else:
-		resultadoSustantivo = misSustantivos[randrange(22)] + " " + misPreposiciones[randrange(21)] + "." 
+		resultadoSustantivo = misSustantivos[randrange(len(misSustantivos))] + " " + misPreposiciones[randrange(len(misPreposiciones))] 
 	
 	return resultadoSustantivo
 
 def Pronombre():
 	Azar3 = randrange(2)
-	#son 4 pronombres
 	if Azar3 == 0:
-		resultadoPronombre = misPronombres[randrange(3)] + " " + Sustantivo()  + " " 
+		resultadoPronombre = misPronombres[randrange(len(misPronombres))] + " " + Sustantivo()  + " " 
 	else:
-		resultadoPronombre = misPronombres[randrange(3)] + " " + Adjetivos()  + " " 
+		resultadoPronombre = misPronombres[randrange(len(misPronombres))] + " " + Adjetivos()  + " " 
 	
 	return resultadoPronombre
 
 def Preposicion():
 	Azar4 = randrange(3)
-	#son 22 preposiciones
 	if Azar4 == 0:
-		resultadoPreposicion = misPreposiciones[randrange(21)] + " " + Sustantivo()  + " " 
+		resultadoPreposicion = misPreposiciones[randrange(len(misPreposiciones))] + " " + Sustantivo()  + " " 
 	elif Azar4 == 1:
-		resultadoPreposicion = misPreposiciones[randrange(21)] + " " + Pronombre()  + " " 
+		resultadoPreposicion = misPreposiciones[randrange(len(misPreposiciones))] + " " + Pronombre()  + " " 
 	else:
-		resultadoPreposicion = misPreposiciones[randrange(21)] + " " + Adjetivos()  + " "
+		resultadoPreposicion = misPreposiciones[randrange(len(misPreposiciones))] + " " + Adjetivos()  + " "
 	
 	return resultadoPreposicion
 
@@ -63,21 +60,19 @@ def Preposicion():
 
 def Verbo():
 	Azar5 = randrange(2)
-	#son 11 verbos
 	if Azar5 == 0:
-		resultadoVerbo = misVerbos[randrange(10)] + " " + misPreposiciones[randrange(21)] + "."
+		resultadoVerbo = misVerbos[randrange(len(misVerbos))] + " " + misPreposiciones[randrange(len(misPreposiciones))] 
 	else:
-		resultadoVerbo = misVerbos[randrange(10)] + " " + misPronombres[randrange(3)] + "."
+		resultadoVerbo = misVerbos[randrange(len(misVerbos))] + " " + misPronombres[randrange(len(misPronombres))] 
 
 	return resultadoVerbo
 
 def Adjetivos():
 	Azar6 = randrange(2)
-	#son 8 adjetivos
 	if Azar6 == 0:
-		resultadoAdjetivos = misAdjetivos[randrange(7)] + " " + misSustantivos[randrange(22)] + "."
+		resultadoAdjetivos = misAdjetivos[randrange(len(misAdjetivos))] + " " + misSustantivos[randrange(len(misSustantivos))] 
 	else:
-		resultadoAdjetivos = misAdjetivos[randrange(7)] + " " + misAdjetivos[randrange(7)] + "."
+		resultadoAdjetivos = misAdjetivos[randrange(len(misAdjetivos))] + " " + misAdjetivos[randrange(len(misAdjetivos))] 
 	
 	return resultadoAdjetivos
 
