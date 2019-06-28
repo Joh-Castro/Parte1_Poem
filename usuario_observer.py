@@ -1,15 +1,16 @@
 class sistema_bancario():
 	def cuenta_usuario_update(self):
-		print("Hay un cambio en su cuenta bancaria")
+		print("PUSH: Hay un cambio en su cuenta bancaria")
 
-class usuario():
+class usuario(sistema_bancario):
+	def __init__(self):
+		self.push = False
+
 	def ver_update(self):
-		self.push = true
+		self.push = True
 
 ##########################
 
-def principal():
-	cambio_sistema_bancario = sistema_bancario()
-	cambio_usuario = usuario()
-
-	cambio_sistema_bancario.cuenta_usuario_update(cambio_usuario())
+cambio_cuenta_bancaria = usuario()
+cambio_cuenta_bancaria.ver_update()
+cambio_cuenta_bancaria.cuenta_usuario_update()
