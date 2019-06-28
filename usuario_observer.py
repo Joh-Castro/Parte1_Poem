@@ -11,6 +11,11 @@ class usuario(sistema_bancario):
 
 ##########################
 
-cambio_cuenta_bancaria = usuario()
-cambio_cuenta_bancaria.ver_update()
-cambio_cuenta_bancaria.cuenta_usuario_update()
+def principal():
+	cambio_cuenta_bancaria = usuario()
+	cambio_cuenta_bancaria.ver_update()
+	cambio_cuenta_bancaria.cuenta_usuario_update()
+
+##########################
+
+principal()
