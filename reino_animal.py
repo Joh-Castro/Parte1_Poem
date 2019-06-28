@@ -12,7 +12,9 @@ class reino_animal():
 			print("Que hace?: dormir")
 
 	def caracteristicas(self):
-		print ("Nombre:",self.nombre_animal, " Color:", self.color_animal, " Peso:", self.peso_animal)
+		print ("Nombre:",self.nombre_animal, 
+			   " Color:", self.color_animal, 
+			   " Peso:", self.peso_animal)
 
 #######################
 
@@ -35,7 +37,8 @@ class peces(reino_animal):
 	def nadar(self):
 		return "nadando"
 
-#"humanos" son del reino animal y ademas pueden hacer todos los metodos de las anteriores clases
+#"humanos" son del reino animal y 
+#ademas pueden hacer todos los metodos de las anteriores clases
 class humanos(mamiferos,aves,reptiles,peces):
 	pass
 
